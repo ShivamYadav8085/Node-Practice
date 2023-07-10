@@ -1,0 +1,44 @@
+[
+    {
+        "id": "1",
+        "name": "Harsh Agarwal",
+        "country": "India",
+        "hobbies": ["Rubiks cube", "Dancing"]
+    },
+    {
+        "id": "2",
+        "name": "Nisarg Dewang",
+        "country": "India",
+        "hobbies": ["Travelling", "Netflix"]
+    },
+    {
+        "id": "3",
+        "name": "Husny Ahmed",
+        "country": "Sri Lanka",
+        "hobbies": ["Painting", "Hiking"]
+    },
+    {
+        "id": "4",
+        "name": "Darren Oliver",
+        "country": "Netherlands",
+        "hobbies": ["Travelling"]
+    },
+    {
+        "id": "5",
+        "name": "John Doe",
+        "country": "Netherlands",
+        "hobbies": ["Dancing", "Singing"]
+    },
+    {
+        "id": "6",
+        "name": "Sean Paul",
+        "country": "United States of America",
+        "hobbies": ["Trekking", "Travelling"]
+    },
+    {
+        "id": "7",
+        "name": "Mike Paddington",
+        "country": "England",
+        "hobbies": ["Calligraphy", "Painting"]
+    }
+]

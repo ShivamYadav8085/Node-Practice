@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1001,
+    "name": {
+      "firstName": "John",
+      "lastName": "Doe"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1002,
+    "name": {
+      "firstName": "Rikesh",
+      "lastName": "Suthar"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  },
+  {
+    "id": 1003,
+    "name": {
+      "firstName": "Nisha",
+      "lastName": "Singhal"
+    },
+    "gender": "female",
+    "interests": ["node", "react"]
+  },
+  {
+    "id": 1004,
+    "name": {
+      "firstName": "Vinay",
+      "lastName": "Gajjar"
+    },
+    "gender": "male",
+    "interests": ["c", "c++"]
+  }
+]
