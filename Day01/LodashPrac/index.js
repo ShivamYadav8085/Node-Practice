@@ -55,14 +55,26 @@ fs.readFile("/Users/shivamy2/Desktop/Practice/NodeJs/Day01/Data/samples.json").t
     console.log(`Male with Interest In C language: ${maleWithInterestInC.length}`);
     console.log(`Female with Interest In C language: ${femaleWithInterestInC.length}`);
 
-    const sameInterestUser = _.intersectionWith(data,data,(arr1,arr2)=>{
-        // console.log(arr1);
-        // console.log(arr2);
-        // console.log(_.isEqual(arr1.interests,arr2.interests));
-        return _.isEqual(arr1.interests,arr2.interests)
-    })   
+
+    // const sameInterestUser = _.intersectionWith(data,data,(arr1,arr2)=>{
+    //      console.log(arr1);
+    //      console.log(arr2);
+    //      console.log(_.isEqual(arr1.interests,arr2.interests));
+    //     return _.isEqual(arr1.interests,arr2.interests)
+    // })   
+    const groupByInterest = _.groupBy(data,"interests")
+
+    const sameInterestUser = _.filter(groupByInterest,(group)=>group.length>1)
+
+    const nameOfUserWithSameInterest = _.map(sameInterestUser,(sameInterestUserSet)=>{
+        const fullNameArr = _.map(sameInterestUserSet,(users)=>{
+            return `${users.name.firstName} ${users.name.lastName}`
+        })
+        return fullNameArr;
+    })
+
     console.log("Same Interest Users");
-    console.log(sameInterestUser);
+    console.dir(nameOfUserWithSameInterest,{depth:null});
 
     const sortById = _.orderBy(data,['id'],['desc'])
     const sortByName = _.orderBy(data,['name.firstName'],['desc'])
