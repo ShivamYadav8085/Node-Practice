@@ -105,3 +105,14 @@ incrementCounter()
 incrementCounter()
 incrementCounter()
 console.log(incrementCounter());
+
+const destructureQuery = (urlString)=>{
+  const url = new URL(urlString);
+  let queryObj = {}
+  url.searchParams.forEach((value,name)=>{
+    queryObj[name]=value;
+  })
+  console.log(queryObj);
+}
+
+destructureQuery(`https://example.org/abc?foo=bar&s=9'`)
