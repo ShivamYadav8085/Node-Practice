@@ -20,6 +20,7 @@ _.forEach(companies, (company) => {
 const companiesStartedAfter1987 = _.filter(companies, (company) => {
   return company.start > 1987;
 });
+
 console.log("Name of each company started after 1987");
 _.forEach(companiesStartedAfter1987, (company) => console.log(company.name));
 
@@ -63,6 +64,11 @@ const newCompany = {
   name: "Company One",
   category: "Finance",
 };
+console.log("Destructuring use");
+const print = ({name})=>{
+	console.log(name);
+}
+print(newCompany)
 
 const  sumOfParams=(...arrOfNum)=>{
 	let sum =0;
@@ -90,3 +96,12 @@ const pushArgInArr = (...values)=>{
 console.log("Collection of arguments");
 
 console.log(pushArgInArr([1,2],"sa"));
+
+let count =0;
+const incrementCounter = ()=>{
+	return ++count;
+}
+incrementCounter()
+incrementCounter()
+incrementCounter()
+console.log(incrementCounter());
