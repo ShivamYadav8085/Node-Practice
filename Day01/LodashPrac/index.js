@@ -1,11 +1,6 @@
-import * as fs from 'node:fs/promises'
 
 import _ from 'lodash';
-
-
-fs.readFile("/Users/shivamy2/Desktop/Practice/NodeJs/Day01/Data/samples.json").then((content)=>{
-    const data = JSON.parse(content)
-
+import data from '../Data/samples.json' assert {type:'json'}
 
     const malePopulation = _.filter(data,(person)=>person.gender==='male').length
     const femalePopulation = _.filter(data,(person)=>person.gender==='female').length
@@ -54,14 +49,7 @@ fs.readFile("/Users/shivamy2/Desktop/Practice/NodeJs/Day01/Data/samples.json").t
 
     console.log(`Male with Interest In C language: ${maleWithInterestInC.length}`);
     console.log(`Female with Interest In C language: ${femaleWithInterestInC.length}`);
-
-
-    // const sameInterestUser = _.intersectionWith(data,data,(arr1,arr2)=>{
-    //      console.log(arr1);
-    //      console.log(arr2);
-    //      console.log(_.isEqual(arr1.interests,arr2.interests));
-    //     return _.isEqual(arr1.interests,arr2.interests)
-    // })   
+ 
     const groupByInterest = _.groupBy(data,"interests")
 
     const sameInterestUser = _.filter(groupByInterest,(group)=>group.length>1)
@@ -84,5 +72,5 @@ fs.readFile("/Users/shivamy2/Desktop/Practice/NodeJs/Day01/Data/samples.json").t
 
     console.log("Sort Users By First Name");
     console.log(sortByName);
-})
+
 
