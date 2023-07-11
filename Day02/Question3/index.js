@@ -112,7 +112,7 @@ const destructureQuery = (urlString)=>{
   url.searchParams.forEach((value,name)=>{
     queryObj[name]=value;
   })
-  console.log(queryObj);
+  return queryObj;
 }
 
-destructureQuery(`https://example.org/abc?foo=bar&s=9'`)
+console.log(destructureQuery(`https://example.org/abc?foo=bar&s=9'`))
