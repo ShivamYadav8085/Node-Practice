@@ -85,11 +85,11 @@ console.log(sumOfParams(1,2,3,5,4,6));
 
 const pushArgInArr = (...values)=>{
 	const arr = [];
-	for(const i of values){
-		if(typeof i === 'object')
-		arr.push(...i);
+	for(const value of values){
+		if(Array.isArray(value))
+		arr.push(...value);
 		else
-		arr.push(i)
+		arr.push(value)
 	}
 	return arr;
 }
