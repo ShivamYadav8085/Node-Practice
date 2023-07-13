@@ -1,6 +1,6 @@
 import {Router} from 'express'
 import * as bookController from '../controller/book.js'
-import { validate } from '../middlewear/validation.js';
+import { validate } from '../middleware/middleware.js';
 
 const router = Router();
 

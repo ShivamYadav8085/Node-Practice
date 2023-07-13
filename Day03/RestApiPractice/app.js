@@ -1,8 +1,15 @@
 import express, { json, urlencoded } from "express";
-import { router as bookRouter } from "./routes/book.js";
+import {connect} from "mongoose"
 import logger from "morgan";
+import { router as bookRouter } from "./src/routes/book.js";
 
 const app = express();
+
+connect("mongodb://localhost:27017").then(()=>{
+  console.log("Mongodb connected");
+}).catch(error=>{
+  throw error
+})
 
 app.use(logger("dev"));
 app.use(json());
