@@ -17,6 +17,7 @@ const getBookById = async (req, res, next) => {
     const bookById = await bookService.getBookById(id);
     return res.status(200).json(bookById);
   } catch (error) {
+    console.log(error);
     if (error.name === "NotFoundError")
       return next(createError(404, error.message));
     else return next(createError(500, error.message));

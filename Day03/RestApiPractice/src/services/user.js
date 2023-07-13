@@ -13,7 +13,6 @@ const register = async (user) => {
 const login = async (userCredentials) => {
   const { sign } = jwt;
   const { email, password } = userCredentials;
-  console.log(userCredentials);
   try {
     const userWithEmail = await User.findOne({ email: email });
     if (userWithEmail && userWithEmail.password === password) {
