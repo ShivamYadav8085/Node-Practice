@@ -6,11 +6,9 @@ const getAllBooks = async (req, res) => {
   try {
     const books = await bookService.getAllBooks();
     return res.status(200).json(books);
-    
   } catch (error) {
-    return next(createError(500,error.message))
+    return next(createError(500, error.message));
   }
- 
 };
 
 const getBookById = async (req, res, next) => {
@@ -19,7 +17,8 @@ const getBookById = async (req, res, next) => {
     const bookById = await bookService.getBookById(id);
     return res.status(200).json(bookById);
   } catch (error) {
-    if (error.name === "NotFoundError") return next(createError(404, error.message));
+    if (error.name === "NotFoundError")
+      return next(createError(404, error.message));
     else return next(createError(500, error.message));
   }
 };
@@ -30,7 +29,8 @@ const getBooksByAuthor = async (req, res, next) => {
     const booksOfGivenAuthor = await bookService.getBooksByAuthor(authorName);
     return res.status(200).json(booksOfGivenAuthor);
   } catch (error) {
-    if (error.name === "NotFoundError") return next(createError(404, error.message));
+    if (error.name === "NotFoundError")
+      return next(createError(404, error.message));
     else return next(createError(500, error.message));
   }
 };
@@ -49,9 +49,10 @@ const deleteBookById = async (req, res, next) => {
   try {
     const { id } = req.params;
     const response = await bookService.deleteBookById(id);
-    return res.status(200).json({deletedCount:response});
+    return res.status(200).json({ deletedCount: response });
   } catch (error) {
-    if (error.name === "NotFoundError") return next(createError(404, error.message));
+    if (error.name === "NotFoundError")
+      return next(createError(404, error.message));
     else return next(createError(500, error.message));
   }
 };
