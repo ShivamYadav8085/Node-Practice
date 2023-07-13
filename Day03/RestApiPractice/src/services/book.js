@@ -1,16 +1,21 @@
 import createError from "http-errors";
-import * as fs from "fs/promises";
 import _ from "lodash";
-import { resolve, dirname } from "path";
-import { fileURLToPath } from "url";
-const absolutePathOfData = resolve(
-  dirname(fileURLToPath(import.meta.url)),
-  "../Data/books.json"
-);
+import { Book } from "../Models/book.js";
+
+
 const getAllBooks = async () => {
   try {
-    const allBooks = await fs.readFile(absolutePathOfData);
-    return JSON.parse(allBooks);
+    const allBooks = await Book.find();
+    return allBooks;
+  } catch (error) {
+    return createError(500, error.message);
+  }
+};
+
+const getBookById = async (bookId) => {
+  try {
+    const book = await Book.findById(bookId);
+    return book;
   } catch (error) {
     return createError(500, error.message);
   }
@@ -18,45 +23,53 @@ const getAllBooks = async () => {
 
 const getBooksByAuthor = async (authorName) => {
   try {
-    const jsonOfAllBooks = await getAllBooks();
-    const booksByAuthor = _.filter(jsonOfAllBooks, (book) => {
-      return book.author === authorName;
-    });
-    if (booksByAuthor.length) {
-      return booksByAuthor;
-    }
-    return createError(404, `Books of ${authorName} does not exist`);
+    const booksOfAuthor =await  Book.find({author:authorName})
+    return booksOfAuthor;
   } catch (error) {
+    console.log(error);
     return createError(500, error.message);
   }
 };
 
 const createABook = async (newBook) => {
   try {
-    const jsonOfAllBooks = await getAllBooks();
-    jsonOfAllBooks.push(newBook);
-    await fs.writeFile(absolutePathOfData, JSON.stringify(jsonOfAllBooks));
-    return jsonOfAllBooks;
+    const response = await Book.create(newBook);
+    return response;
   } catch (error) {
     return createError(500, error.message);
   }
 };
 
-const deleteBookByAuthor = async (authorName) => {
+const deleteBookById = async (bookId)=>{
   try {
-    const authorBooks = await getBooksByAuthor(authorName);
-    if (authorBooks instanceof Error) {
-      return createError(404, `Books of ${authorName} does not exist`);
-    }
-    const jsonOfAllBooks = await getAllBooks();
-    const booksNotFromAuthor = _.filter(jsonOfAllBooks, (book) => {
-      return book.author !== authorName;
-    });
-    await fs.writeFile(absolutePathOfData, JSON.stringify(booksNotFromAuthor));
-    return { message: "book deleted" };
+    const response = await Book.deleteOne({_id:bookId})
+    return response
   } catch (error) {
-    return createError(500, error.message);
+    return createError(500,error.message)
   }
-};
+}
 
-export { getAllBooks, getBooksByAuthor, createABook, deleteBookByAuthor };
+// const deleteBookByAuthor = async (authorName) => {
+//   try {
+//     const authorBooks = await getBooksByAuthor(authorName);
+//     if (authorBooks instanceof Error) {
+//       return createError(404, `Books of ${authorName} does not exist`);
+//     }
+//     const jsonOfAllBooks = await getAllBooks();
+//     const booksNotFromAuthor = _.filter(jsonOfAllBooks, (book) => {
+//       return book.author !== authorName;
+//     });
+//     await fs.writeFile(absolutePathOfData, JSON.stringify(booksNotFromAuthor));
+//     return { message: "book deleted" };
+//   } catch (error) {
+//     return createError(500, error.message);
+//   }
+// };
+
+export {
+  getAllBooks,
+  getBookById,
+  getBooksByAuthor,
+  createABook,
+  deleteBookById
+};
