@@ -2,9 +2,7 @@ import express, { json, urlencoded } from "express";
 import {connect} from "mongoose"
 import logger from "morgan";
 import { router as bookRouter } from "./src/routes/book.js";
-
-import  * as fs from "fs/promises"
-import { Book } from "./src/Models/book.js";
+import { router as userRouter } from "./src/routes/user.js";
 
 const app = express();
 
@@ -22,6 +20,7 @@ app.use(urlencoded({ extended: false }));
 
 
 app.use("/books", bookRouter);
+app.use("/user", userRouter);
 
 
 
