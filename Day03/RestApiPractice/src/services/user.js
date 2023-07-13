@@ -22,7 +22,9 @@ const login = async (userCredentials) => {
       });
       return token;
     } else {
-        throw new Error("Wrong credentials")
+      const wrongCredentialError = new Error("Wrong credentials")
+      wrongCredentialError.name="WrongCredentialError"
+        throw wrongCredentialError;
     }
   } catch (error) {
     throw error

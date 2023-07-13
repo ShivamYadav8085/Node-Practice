@@ -16,7 +16,10 @@ const login = async (req,res,next)=>{
         const response = await userService.login(credentials);
         return res.status(200).json({token:response})
     } catch (error) {
-        next(createError(401,error))
+        if(error.name==="WrongCredentialError")
+        return next(createError(401,error.message))
+        else
+        return next(createError(500,error.message))
     }
 }
 
