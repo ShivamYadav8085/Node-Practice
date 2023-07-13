@@ -17,7 +17,7 @@ const login = async (userCredentials) => {
   try {
     const userWithEmail = await User.findOne({ email: email });
     if (userWithEmail && userWithEmail.password === password) {
-      const token = sign(userCredentials.email, "privatekeystoredinenv", {
+      const token = sign(userCredentials.email, process.env.PRIVATE_KEY, {
         algorithm: "HS256",
       });
       return token;
