@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { Book } from "../Models/book.js";
+import { Book } from "../shared/database/Models/book.js";
 
 
 const getAllBooks = async () => {

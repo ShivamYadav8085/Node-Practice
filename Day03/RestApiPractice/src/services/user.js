@@ -1,4 +1,4 @@
-import { User } from "../Models/user.js";
+import { User } from "../shared/database/Models/user.js";
 import jwt from "jsonwebtoken";
 
 const register = async (user) => {

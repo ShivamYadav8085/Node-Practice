@@ -1,12 +1,12 @@
 import { Router } from "express";
 import * as bookController from "../controllers/book.js";
-import { validate } from "../middleware/middleware.js";
-import { authenticate } from "../middleware/authenticate.js";
+import { validateBook } from "../shared/middleware/validation/validateBook.js";
+import { authenticate } from "../shared/middleware/authenticate.js";
 
 const router = Router();
 
 router.get("/", bookController.getAllBooks);
-router.post("/", authenticate, validate, bookController.createABook);
+router.post("/", authenticate, validateBook, bookController.createABook);
 router.get("/:id", authenticate, bookController.getBookById);
 router.get(
   "/author/:authorName",
