@@ -8,7 +8,7 @@ const bookSchema = Joi.object({
   language: Joi.string(),
   link: Joi.string(),
   pages: Joi.number(),
-  year:Joi.number()
+  year: Joi.number(),
 });
 
 export { bookSchema };

@@ -1,4 +1,4 @@
-import {bookSchema} from "../schema/book.js"
+import {bookSchema} from "../validation/bookSchema.js"
 
 const validate = (req,res,next)=>{
     const {error}=bookSchema.validate(req.body)
