@@ -3,7 +3,7 @@ import * as userService from "../services/user.js";
 const register = async (req, res, next) => {
   const newUser = req.body;
   try {
-    const response = userService.register(newUser);
+    const response =await  userService.register(newUser);
     return res.status(201).json(response);
   } catch (error) {
     next(createError(500, error));

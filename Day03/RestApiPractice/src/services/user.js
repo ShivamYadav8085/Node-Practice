@@ -1,10 +1,10 @@
-import { User } from "../shared/database/Models/user.js";
+import { User } from "../shared/database/models/user.js";
 import jwt from "jsonwebtoken";
 
 const register = async (user) => {
   try {
     const registeredUser = await User.create(user);
-    return registeredUser;
+    return {message:"User Registered successfully"};
   } catch (error) {
     throw error;
   }
