@@ -1,14 +1,14 @@
-import Joi from "joi";
+import Joi from 'joi';
 
 const bookSchema = Joi.object({
-  author: Joi.string().required(),
-  title: Joi.string().required(),
-  country: Joi.string(),
-  imageLink: Joi.string(),
-  language: Joi.string(),
-  link: Joi.string(),
-  pages: Joi.number(),
-  year: Joi.number(),
-});
+	author: Joi.string().required(),
+	title: Joi.string().required(),
+	country: Joi.string(),
+	imageLink: Joi.string(),
+	language: Joi.string(),
+	link: Joi.string(),
+	pages: Joi.number(),
+	year: Joi.number(),
+}).unknown(true);
 
 export { bookSchema };
