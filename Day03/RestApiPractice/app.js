@@ -3,7 +3,7 @@ import { connect } from 'mongoose';
 import 'dotenv/config.js';
 import _ from 'lodash';
 import status from 'statuses';
-import logger from 'morgan';
+import {logger} from './src/shared/logger/index.js';
 
 import { connectMongoDb } from './src/shared/database/connections/connectMongoDb.js';
 
@@ -15,7 +15,6 @@ const app = express();
 
 connectMongoDb();
 
-app.use(logger('dev'));
 app.use(json());
 app.use(urlencoded({ extended: false }));
 
@@ -32,6 +31,11 @@ app.use((req, res, next) => {
 					: [],
 				error: null,
 			};
+			logger.info(formattedResponse.status, {
+				route: req.originalUrl,
+				statusCode: res.statusCode,
+				httpMethod: req.method,
+			});
 			return originalJson.call(res, formattedResponse);
 		}
 		return originalJson.call(res, data);
@@ -44,12 +48,16 @@ app.use('/user', userRouter);
 app.use('/employee', employeeRouter);
 
 app.use((err, req, res, next) => {
-	res.status(err.status).json({
+	logger.error(err.message, {
+		route: req.originalUrl,
+		statusCode: res.statusCode,
+		httpMethod: req.method,
+	});
+	res.status(err.statusCode).json({
 		status: status(res.statusCode),
 		data: [],
 		error: err.message,
 	});
-	next();
 });
 
 export { app };
