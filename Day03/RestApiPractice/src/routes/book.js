@@ -1,12 +1,13 @@
 import { Router } from "express";
 import * as bookController from "../controllers/book.js";
-import { validateBook } from "../shared/middleware/validation/validateBook.js";
+import {  validateRequest } from "../shared/middleware/validation/validateRequest.js";
 import { authenticate } from "../shared/middleware/authenticate.js";
+import { bookSchema } from "../shared/validationSchema/bookValidationSchema/bookSchema.js";
 
 const router = Router();
 
 router.get("/", bookController.getAllBooks);
-router.post("/", authenticate, validateBook, bookController.createABook);
+router.post("/", authenticate, validateRequest(bookSchema), bookController.createABook);
 router.get("/:id", authenticate, bookController.getBookById);
 router.get(
   "/author/:authorName",

@@ -44,7 +44,6 @@ app.use('/user', userRouter);
 app.use('/employee', employeeRouter);
 
 app.use((err, req, res, next) => {
-	console.log(err);
 	res.status(err.status).json({
 		status: status(res.statusCode),
 		data: [],

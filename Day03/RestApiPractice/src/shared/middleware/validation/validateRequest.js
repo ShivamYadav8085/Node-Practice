@@ -1,8 +1,7 @@
 import createError from 'http-errors';
-import { bookSchema } from '../../validation/bookSchema.js';
 
-const validateBook = (req, res, next) => {
-	const { error } = bookSchema.validate(req.body, { abortEarly: false });
+const validateRequest =(schema)=> (req, res, next) => {
+	const { error } = schema.validate(req.body, { abortEarly: false });
 	if (error) {
 		const { details } = error;
 		const message = details
@@ -14,4 +13,4 @@ const validateBook = (req, res, next) => {
 	}
 };
 
-export { validateBook };
+export { validateRequest };
