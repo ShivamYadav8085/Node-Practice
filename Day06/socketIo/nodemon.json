@@ -1,0 +1,5 @@
+{
+    "ext":".ts,.js,.html",
+    "ignore":[],
+    "exec":"npx ts-node ./src/server.ts"
+}
