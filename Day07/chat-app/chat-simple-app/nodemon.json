@@ -1,0 +1,4 @@
+{
+    "ext":".ts,.js,.html,.css",
+    "exec":"npx ts-node ./src/server.ts"
+}
