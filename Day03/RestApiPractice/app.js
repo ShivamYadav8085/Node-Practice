@@ -1,5 +1,4 @@
 import express, { json, urlencoded } from 'express';
-import { connect } from 'mongoose';
 import 'dotenv/config.js';
 import _ from 'lodash';
 import status from 'statuses';

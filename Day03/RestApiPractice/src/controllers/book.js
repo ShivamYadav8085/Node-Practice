@@ -1,6 +1,6 @@
 import createError from "http-errors";
 
-import * as bookService from "../services/book.js";
+import {bookService} from "../services/book.js";
 
 const getAllBooks = async (req, res) => {
   try {
