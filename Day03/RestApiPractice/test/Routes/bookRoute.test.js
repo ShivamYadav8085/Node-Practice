@@ -7,14 +7,7 @@ describe("Book routes test", () => {
   before(() => {
     server = request(app);
   });
-  after((done) => {
-    server.close(err=>{
-      if(err)
-      done(err)
-      else
-      done()
-    });
-  });
+
   describe("GET: /books", () => {
     it("should get all books", () => {});
   });
