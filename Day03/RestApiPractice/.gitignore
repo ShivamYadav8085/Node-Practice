@@ -1,3 +1,5 @@
 node_modules/
 #Secret file
 .env
+.nyc_output
+coverage
